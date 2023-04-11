@@ -29,6 +29,7 @@ import 'package:plantdiseasedetector/diseases/PotatoEarlyBlight.dart';
 import 'package:plantdiseasedetector/diseases/PotatoLateBlight.dart';
 import 'package:plantdiseasedetector/diseases/SquashMildew.dart';
 import 'package:plantdiseasedetector/diseases/StrawberryLeafScorch.dart';
+import 'package:plantdiseasedetector/diseases/StripeRust.dart';
 import 'package:plantdiseasedetector/diseases/TomatoBacteriaSpot.dart';
 import 'package:plantdiseasedetector/diseases/TomatoEarlyBlight.dart';
 import 'package:plantdiseasedetector/diseases/TomatoLateBlight.dart';
@@ -38,6 +39,7 @@ import 'package:plantdiseasedetector/diseases/TomatoMosaic.dart';
 import 'package:plantdiseasedetector/diseases/TomatoSpider.dart';
 import 'package:plantdiseasedetector/diseases/TomatoTarget.dart';
 import 'package:plantdiseasedetector/diseases/TomatoYellow.dart';
+import 'package:plantdiseasedetector/diseases/YellowRust.dart';
 import 'package:plantdiseasedetector/models/apimodel.dart';
 import 'package:plantdiseasedetector/screens/classifieddiseases.dart';
 import 'package:plantdiseasedetector/screens/drawer.dart';
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Conditions temp, humid, moist;
   String head = "";
   bool firsttime;
-  int count=0;
+  int count = 0;
 
   @override
   void initState() {
@@ -84,7 +86,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     NotificationService().initialise();
     firsttime = true;
     loadModel();
-    count=0;
+    count = 0;
     checkForNotification();
   }
 
@@ -92,12 +94,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     print("DEBUG: Inside Load Model Function");
     Tflite.close();
     try {
-      String res;
-      res = await Tflite.loadModel(
-        model: "assets/plant_disease_model.tflite",
-        labels: "assets/disease_labels.txt",
+      //  String model1 = await Tflite.loadModel(
+      //     model: "assets/plant_disease_model.tflite",
+      //     labels: "assets/disease_labels.txt",
+      //   );
+      await Tflite.loadModel(
+        model: "assets/wheat_disease_model.tflite",
+        labels:"assets/wheat_disease_labels.txt",
       );
-      print(res);
+
+      // print(model2);
     } on PlatformException {
       print('Failed to load model.');
       showErrorProcessing(context);
@@ -105,15 +111,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void resultPage(BuildContext context, String name) {
-    if (name == "apple apple scab") {
+    if (name == "Stripe Rust") {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => AppleScab()),
+        MaterialPageRoute(builder: (context) => StripeRust()),
       );
-    } else if (name == "apple black rot") {
+    } else if (name == "Yellow Rust") {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => AppleBlack()),
+        MaterialPageRoute(builder: (context) => YellowRust()),
       );
     } else if (name == "apple cedar apple rust") {
       Navigator.push(
@@ -295,9 +301,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       Uint8List bytes = image.readAsBytesSync();
       img.Image oriImage = img.decodeJpg(bytes);
       img.Image resizedImage =
-          img.copyResize(oriImage, width: 299, height: 299);
+          img.copyResize(oriImage, width: 224, height: 224);
       var recognitions = await Tflite.runModelOnBinary(
-        binary: imageToByteListFloat32(resizedImage, 299, 0, 255.0),
+        binary: imageToByteListFloat32(resizedImage, 224, 0, 255.0),
         numResults: 3,
         threshold: 0.5,
       );
@@ -503,11 +509,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         event.docChanges.forEach((element) {
           if (element.type == DocumentChangeType.added &&
               element.doc.data()['existence'] == true) {
-              setState(() {
-                count++;
-              });
-              updateNotification(element.doc.id);
-              print(count);
+            setState(() {
+              count++;
+            });
+            updateNotification(element.doc.id);
+            print(count);
           }
         });
       });
@@ -594,10 +600,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               setState(() {
                                 count = 0;
                               });
-                               Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Notifications()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Notifications()));
                             },
                           ),
                           count != 0
@@ -877,21 +883,19 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       //Temperature
       //Real data
       //(double.parse(dataModelApi.feeds[0].field1).toInt() >= 18 &&
-          // double.parse(dataModelApi.feeds[0].field1).toInt() <= 24)
+      // double.parse(dataModelApi.feeds[0].field1).toInt() <= 24)
       if (double.parse(dataModelApi.feeds[0].field1).toInt() >= 0 &&
           double.parse(dataModelApi.feeds[0].field1).toInt() <= 30) {
         temp = new Conditions();
         temp.icon = 'assets/temperature.png';
         temp.name = 'Temperature';
         //real data
-       // temp.value = '${double.parse(dataModelApi.feeds[0].field1).toInt()}'; 
+        // temp.value = '${double.parse(dataModelApi.feeds[0].field1).toInt()}';
         temp.value = '26';
         temp.subText = 'Normal';
         temp.color = '${normalTemp}';
         temp.subColor = '${normalText}';
-      }
-      
-       else if (double.parse(dataModelApi.feeds[0].field1).toInt() > 24 &&
+      } else if (double.parse(dataModelApi.feeds[0].field1).toInt() > 24 &&
           double.parse(dataModelApi.feeds[0].field1).toInt() <= 35) {
         temp = new Conditions();
         temp.icon = 'assets/temperature.png';
@@ -913,7 +917,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       //Humidity
       //real data
       //(double.parse(dataModelApi.feeds[0].field2).toInt() >= 0 &&
-          // double.parse(dataModelApi.feeds[0].field2).toInt() <= 70)
+      // double.parse(dataModelApi.feeds[0].field2).toInt() <= 70)
       if (double.parse(dataModelApi.feeds[0].field2).toInt() >= 0 &&
           double.parse(dataModelApi.feeds[0].field2).toInt() <= 70) {
         humid = new Conditions();

@@ -1,0 +1,7 @@
+Stripe Rust
+Yellow Rust
+Wheat Leaf Rust
+Test/Brown Rust
+Nitrogen Deficient
+Septoria
+Healthy
