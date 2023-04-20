@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/icon_sheti" />
+            android:src="@mipmap/icon_agrona" />
     </item>
 </layer-list>

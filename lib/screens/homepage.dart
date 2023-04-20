@@ -14,6 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:plantdiseasedetector/diseases/AppleBlackRot.dart';
 import 'package:plantdiseasedetector/diseases/AppleCedarRust.dart';
 import 'package:plantdiseasedetector/diseases/AppleScab.dart';
+import 'package:plantdiseasedetector/diseases/BrownRust.dart';
 import 'package:plantdiseasedetector/diseases/CherrySourMildew.dart';
 import 'package:plantdiseasedetector/diseases/CornCommonRust.dart';
 import 'package:plantdiseasedetector/diseases/CornGrayLeaf.dart';
@@ -21,12 +22,14 @@ import 'package:plantdiseasedetector/diseases/GrapeBlackRot.dart';
 import 'package:plantdiseasedetector/diseases/GrapeEsca.dart';
 import 'package:plantdiseasedetector/diseases/GrapeLeafBlight.dart';
 import 'package:plantdiseasedetector/diseases/Healthy.dart';
+import 'package:plantdiseasedetector/diseases/NitrogenDeficient.dart';
 import 'package:plantdiseasedetector/diseases/NorthernCornLeafBlight.dart';
 import 'package:plantdiseasedetector/diseases/OrangeCitrus.dart';
 import 'package:plantdiseasedetector/diseases/PeachSpot.dart';
 import 'package:plantdiseasedetector/diseases/PepperBacterialSpot.dart';
 import 'package:plantdiseasedetector/diseases/PotatoEarlyBlight.dart';
 import 'package:plantdiseasedetector/diseases/PotatoLateBlight.dart';
+import 'package:plantdiseasedetector/diseases/Septoria.dart';
 import 'package:plantdiseasedetector/diseases/SquashMildew.dart';
 import 'package:plantdiseasedetector/diseases/StrawberryLeafScorch.dart';
 import 'package:plantdiseasedetector/diseases/StripeRust.dart';
@@ -39,6 +42,7 @@ import 'package:plantdiseasedetector/diseases/TomatoMosaic.dart';
 import 'package:plantdiseasedetector/diseases/TomatoSpider.dart';
 import 'package:plantdiseasedetector/diseases/TomatoTarget.dart';
 import 'package:plantdiseasedetector/diseases/TomatoYellow.dart';
+import 'package:plantdiseasedetector/diseases/WheatLeafRust.dart';
 import 'package:plantdiseasedetector/diseases/YellowRust.dart';
 import 'package:plantdiseasedetector/models/apimodel.dart';
 import 'package:plantdiseasedetector/screens/classifieddiseases.dart';
@@ -100,7 +104,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       //   );
       await Tflite.loadModel(
         model: "assets/wheat_disease_model.tflite",
-        labels:"assets/wheat_disease_labels.txt",
+        labels: "assets/wheat_disease_labels.txt",
       );
 
       // print(model2);
@@ -120,6 +124,26 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => YellowRust()),
+      );
+    } else if (name == "Wheat Leaf Rust") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WheatLeafRust()),
+      );
+    } else if (name == "Test/Brown Rust") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => BrownRust()),
+      );
+    } else if (name == "Nitrogen Deficient") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => NitrogenDeficient()),
+      );
+    } else if (name == "Septoria") {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Septoria()),
       );
     } else if (name == "apple cedar apple rust") {
       Navigator.push(
@@ -252,7 +276,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         name == "raspberry healthy" ||
         name == "soybean healthyy" ||
         name == "strawberry healthy" ||
-        name == "tomato healthy") {
+        name == "tomato healthy" ||
+        name == "Healthy") {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Healthy()),

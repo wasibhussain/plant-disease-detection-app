@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
-class Healthy extends StatefulWidget {
-  Healthy({Key key, this.title}) : super(key: key);
+class BrownRust extends StatefulWidget {
+  BrownRust({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  HealthyState createState() => HealthyState();
+  BrownRustState createState() => BrownRustState();
 }
 
-class HealthyState extends State<Healthy> {
+class BrownRustState extends State<BrownRust> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,14 +22,14 @@ class HealthyState extends State<Healthy> {
                 child: Stack(
                   children: <Widget>[
                     Hero(
-                      tag: "Healthy Crops",
+                      tag: "Brown Rust",
                       child: Carousel(
                         images: [
-                          AssetImage('assets/health.png'),
+                          AssetImage('assets/brownrust_1.jpg'),
                           // Photo from https://unsplash.com/photos/2d4lAQAlbDA
-                          AssetImage('assets/health2.jpg'),
+                          AssetImage('assets/brownrust_2.jpg'),
                           // Photo from https://unsplash.com/photos/FqqiAvJejto
-                          AssetImage('assets/health3.jpg'),
+                          AssetImage('assets/brownrust_3.jpg'),
                           // Photo from https://unsplash.com/photos/_-JR5TxKNSo
                         ],
                         dotSize: 4.0,
@@ -66,7 +66,7 @@ class HealthyState extends State<Healthy> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Excellent',
+                          'Brown Rust',
                           style: new TextStyle(
                             fontFamily: "VT323",
                             fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class HealthyState extends State<Healthy> {
                           ),
                         ),
                         Text(
-                          'Your crop is healthy. Keep it Up!',
+                          'Fungal Plant Disease',
                           style: new TextStyle(
                             fontSize: 15.0,
                           ),
@@ -93,14 +93,59 @@ class HealthyState extends State<Healthy> {
         Padding(
           padding: EdgeInsets.only(top: 60, bottom: 20, left: 14),
           child: Text(
-            'NOTE',
+            'SYMPTOMS',
             style: TextStyle(fontSize: 20, fontFamily: 'ConcertOne-Regular'),
           ),
         ),
         Padding(
           padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
           child: Text(
-            '1. Keep monitoring your crop.\n\n2. Water your plant regularly and supply with proper fertilisers.\n\n3. Also, keep checking the water level with the help of app.\n\n4. Take descisions keeping the soil conditions in mind.',
+            'Brown Rust is a fungal disease that affects wheat plants in Pakistan, caused by Puccinia triticina fungus. It shows reddish-brown circular to oval-shaped pustules on leaves, stems, and heads of the plant, often with a yellowish or grayish-white halo. The disease can lead to stunted growth, reduced seed production, and poor quality of grains, making early detection and management essential to prevent yield losses.',
+            textAlign: TextAlign.justify,
+            style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 40, bottom: 20, left: 14),
+          child: Text(
+            'FAVORABLE ENVIRONMENT CONDITIONS',
+            style: TextStyle(fontSize: 20, fontFamily: 'ConcertOne-Regular'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
+          child: Text(
+            'Brown Rust disease in wheat plants in Pakistan favors cool and humid weather conditions, with temperatures ranging from 15°C to 25°C and relative humidity levels of 70% to 100%. The disease can also spread rapidly under cloudy and rainy weather conditions, with frequent dew or rainfall. The presence of alternate hosts and susceptible wheat varieties can further exacerbate the spread of the disease.',
+            textAlign: TextAlign.justify,
+            style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 40, bottom: 20, left: 14),
+          child: Text(
+            'MANAGEMENT (REMEDIES)',
+            style: TextStyle(fontSize: 20, fontFamily: 'ConcertOne-Regular'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
+          child: Text(
+            "The following are some management strategies that can be used to prevent or control brown rust disease: \n\nUse resistant/tolerant wheat varieties: Choose wheat varieties that are resistant or tolerant to Brown Rust disease. \n\nPractice crop rotation: Rotate wheat with other crops to break the disease cycle. This practice can reduce the build-up of disease inoculum in the soil and lower the disease pressure on the wheat crop. \n\nPlant early maturing varieties: Plant early maturing varieties to avoid the peak disease season. \n\nUse cultural practices: Use cultural practices like deep plowing and fallowing to reduce the disease severity. \n\nMaintain proper plant spacing: Maintain proper plant spacing to promote good air circulation and reduce humidity.",
+            textAlign: TextAlign.justify,
+            style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 40, bottom: 20, left: 14),
+          child: Text(
+            'CHEMICAL/BIOLOGICAL CONTROL',
+            style: TextStyle(fontSize: 20, fontFamily: 'ConcertOne-Regular'),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 20, bottom: 20, left: 14, right: 14),
+          child: Text(
+            "There are various chemical and biological control measures that can be used to manage brown rust disease: \n\nChemical control: Fungicides such as azoxystrobin, propiconazole, and triadimenol can be used to control Brown Rust disease. These fungicides can be applied either as seed treatments, foliar sprays, or soil drenches, depending on the stage of growth and severity of the disease. \n\nBiological control: Biological control measures involve the use of microorganisms, such as bacteria and fungi, to control the disease. Some examples of biocontrol agents used against Brown Rust disease include Trichoderma harzianum, Bacillus subtilis, and Pseudomonas fluorescens.",
             textAlign: TextAlign.justify,
             style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
           ),

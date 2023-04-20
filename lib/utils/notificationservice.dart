@@ -6,7 +6,7 @@ class NotificationService{
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
 
   initialise()async{
-    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('sheti_icon');
+    const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('agrona_icon');
     final InitializationSettings initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid
     );

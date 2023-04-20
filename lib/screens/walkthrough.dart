@@ -21,7 +21,7 @@ class _LearnerWalkThroughState extends State<WalkThrough> {
   int currentIndexPage = 0;
   int pageLength;
   bool _loading = false;
-  var titles = ['AarogyaSheti', 'AarogyaSheti', 'AarogyaSheti'];
+  var titles = ['Agrona', 'Agrona', 'Agrona'];
   var subTitles = [
     "An All-in-One App to Help farmers making farming a lot easier.",
     "The App helps to detect defected regions of crops so that necessary care can be taken.",
@@ -74,7 +74,7 @@ class _LearnerWalkThroughState extends State<WalkThrough> {
               color: Color(0xFFF6F7FA),
               child: PageView(
                 children: <Widget>[
-                  WalkThroughUp(textContent: "sheti_icon.png"),
+                  WalkThroughUp(textContent: "agrona.png"),
                   WalkThroughUp(textContent: "slide2.jpg"),
                   WalkThroughUp(textContent: "slide1.jpg"),
                 ],
