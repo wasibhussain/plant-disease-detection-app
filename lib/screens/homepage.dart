@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plantdiseasedetector/diseases/AppleBlackRot.dart';
 import 'package:plantdiseasedetector/diseases/AppleCedarRust.dart';
@@ -871,6 +872,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
         children: [
+           SpeedDialChild(
+              backgroundColor: Colors.red,
+              child: Icon(
+                Icons.warning,
+                color: Colors.white,
+              ),
+              label: 'camera distance = 30cm or Less',
+              labelBackgroundColor: Colors.white,
+             
+              ),
           SpeedDialChild(
               backgroundColor: Colors.red,
               child: Icon(
@@ -879,7 +890,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ),
               label: 'Camera',
               labelBackgroundColor: Colors.white,
-              onTap: () => getCamera()),
+              onTap: () {
+                getCamera();
+              // Get.snackbar('Please Note that', 'Put the camera at the distance of 30cm or Less');
+              }),
+             
           SpeedDialChild(
               backgroundColor: Colors.blue,
               child: Icon(
@@ -916,7 +931,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         temp.name = 'Temperature';
         //real data
         // temp.value = '${double.parse(dataModelApi.feeds[0].field1).toInt()}';
-        temp.value = '26';
+        temp.value = '23';
         temp.subText = 'Normal';
         temp.color = '${normalTemp}';
         temp.subColor = '${normalText}';

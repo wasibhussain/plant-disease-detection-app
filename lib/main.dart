@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plantdiseasedetector/screens/homepage.dart';
 import 'package:plantdiseasedetector/screens/walkthrough.dart';
 import 'package:plantdiseasedetector/services/dbdata.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Agrona',
       theme: ThemeData(
